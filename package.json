@@ -9,7 +9,6 @@
   "author": "Steffen Henschel",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2",
-    "sqlite3": "^3.1.13"
+    "@types/node": "^8.0.53"
   }
 }
