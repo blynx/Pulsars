@@ -1,4 +1,4 @@
-import psrParameterList from './PulsarParameters'
+import psrParameterList from './PsrcatPulsarParameters'
 
 
 
@@ -10,6 +10,11 @@ class PsrcatArgBase {
         this.name = init.name
         this.alias = init.alias
     }
+
+    /** */
+    escape(str: string) {
+        return str.replace('"', '').replace("'", '').replace(';', '')
+    }
 }
 
 
@@ -19,10 +24,7 @@ export class PsrcatArg extends PsrcatArgBase {
 
     toString(): string {
         if(this.value === undefined) return ''
-        let escapedVal = this.value
-            .replace('"', '')
-            .replace("'", '')
-            .replace(';', '')
+        let escapedVal = this.escape(this.value)
         return this.alias + ` "${escapedVal}"`
     }
 
@@ -39,9 +41,7 @@ export class PsrcatArgPlural extends PsrcatArgBase {
     toString(): string {
         if(this.values.length > 0) {
             let out = this.values.reduce((acc, v) => {
-                v = v.replace('"', '')
-                    .replace("'", '')
-                    .replace(';', '')
+                v = this.escape(v)
                 return acc += (" " + v)
             })
             return this.alias + ` "${out}"`
@@ -95,7 +95,7 @@ export class PsrcatArgs {
 
     put(arg: string|{name:string, value:string}) {
         if(typeof arg == 'string') {
-            if(this.psrParameterList.indexOf(arg.toUpperCase()) > -1) {
+            if(this.psrParameterList.indexOf(arg.toUpperCase()) >= 0) {
                 this.args.pulsarParams.add(arg)
             }
         } else {

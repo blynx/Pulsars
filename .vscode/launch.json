@@ -16,6 +16,13 @@
             ],
             "sourceMaps": true,
             "console": "internalConsole"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Psrcat CLI Tools",
+            "program": "${workspaceFolder}/psrcat-tools.js",
+            "console": "internalConsole"
         }
     ]
 }

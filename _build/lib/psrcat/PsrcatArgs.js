@@ -1,20 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const PulsarParameters_1 = require("./PulsarParameters");
+const PsrcatPulsarParameters_1 = require("./PsrcatPulsarParameters");
 class PsrcatArgBase {
     constructor(init) {
         this.name = init.name;
         this.alias = init.alias;
+    }
+    /** */
+    escape(str) {
+        return str.replace('"', '').replace("'", '').replace(';', '');
     }
 }
 class PsrcatArg extends PsrcatArgBase {
     toString() {
         if (this.value === undefined)
             return '';
-        let escapedVal = this.value
-            .replace('"', '')
-            .replace("'", '')
-            .replace(';', '');
+        let escapedVal = this.escape(this.value);
         return this.alias + ` "${escapedVal}"`;
     }
     put(v) {
@@ -30,9 +31,7 @@ class PsrcatArgPlural extends PsrcatArgBase {
     toString() {
         if (this.values.length > 0) {
             let out = this.values.reduce((acc, v) => {
-                v = v.replace('"', '')
-                    .replace("'", '')
-                    .replace(';', '');
+                v = this.escape(v);
                 return acc += (" " + v);
             });
             return this.alias + ` "${out}"`;
@@ -54,7 +53,7 @@ class PsrcatArgs {
             filter: new PsrcatArg({ alias: '-l', name: 'filter' }),
             pulsarParams: new PsrcatArgPlural({ alias: '-c', name: 'pulsarParams' })
         };
-        this.psrParameterList = PulsarParameters_1.default;
+        this.psrParameterList = PsrcatPulsarParameters_1.default;
         this.apply(newPsrcatArgs);
     }
     apply(newPsrcatArgs) {
@@ -64,7 +63,7 @@ class PsrcatArgs {
     }
     put(arg) {
         if (typeof arg == 'string') {
-            if (this.psrParameterList.indexOf(arg.toUpperCase()) > -1) {
+            if (this.psrParameterList.indexOf(arg.toUpperCase()) >= 0) {
                 this.args.pulsarParams.add(arg);
             }
         }

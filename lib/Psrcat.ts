@@ -1,5 +1,4 @@
 import child_process = require('child_process')
-import psrParameters from './psrcat/PulsarParameters'
 import { PsrcatArg, PsrcatArgPlural, PsrcatArgs } from './psrcat/PsrcatArgs'
 
 const executable = './db_psrcat/psrcat'
