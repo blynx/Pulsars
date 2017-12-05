@@ -7,8 +7,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/index.js"
+            "name": "Psrcat Node",
+            "program": "${workspaceFolder}/index.ts",
+            "outFiles": [
+                "${workspaceRoot}/_build/*.js",
+                "${workspaceRoot}/_build/lib/*.js",
+                "${workspaceRoot}/_build/lib/psrcat/*.js"
+            ],
+            "sourceMaps": true,
+            "console": "internalConsole"
         }
     ]
 }

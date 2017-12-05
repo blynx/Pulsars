@@ -1,0 +1,27 @@
+
+notes.taskpaper
+todos.taskpaper
+notes&todos.taskpaper
+
+info.php
+.clamp
+clamp.json
+
+# macOS
+
+*.DS_Store
+.AppleDouble
+.LSOverride
+._*             # Thumbnails
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

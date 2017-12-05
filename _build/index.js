@@ -1,7 +1,6 @@
-define(["require", "exports", "./lib/Psrcat"], function (require, exports, Psrcat) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    const psrcat = new Psrcat();
-});
-// psrcat.query("name=J2353+85, p0, XX") 
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Psrcat_1 = require("./lib/Psrcat");
+const psrcat = new Psrcat_1.Psrcat();
+console.log(psrcat.query("p0, dist, filter = p0 > 7 && p0 < 8, descend"));
 //# sourceMappingURL=index.js.map

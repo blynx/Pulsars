@@ -30,6 +30,7 @@ defmodule Psrex.EPN do
                             }
                             export_profile(epn_psr_profile)
                         else
+                            # recursion 
                             scrape_epn_profiles(new_url, href)
                         end
                     end

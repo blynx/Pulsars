@@ -4,11 +4,14 @@
   "description": "Pulsar Visualisations",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "author": "Steffen Henschel",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^8.0.53"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0"
   }
 }

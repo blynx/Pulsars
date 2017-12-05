@@ -6,7 +6,9 @@ defmodule Psrex.CLI do
     """
 
     def main(args) do 
-        args |> parse_args |> process
+        args 
+        |> parse_args 
+        |> process
     end
 
     def process({[], _, []}) do

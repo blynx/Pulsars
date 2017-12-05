@@ -1,5 +1,5 @@
-import Psrcat = require('./lib/Psrcat')
+import { Psrcat }  from './lib/Psrcat'
 
 const psrcat = new Psrcat()
 
-// psrcat.query("name=J2353+85, p0, XX")
+console.log(psrcat.query("p0, dist, filter = p0 > 7 && p0 < 8, descend"))
